@@ -55,7 +55,7 @@ function potato(person1, person2) {
     
 var newSortedArray = objArray.sort(potato);
 
-console.log(newSortedArray);
+//console.log(newSortedArray);
 
 function fancyPotato(person1, person2) {
   
@@ -75,4 +75,17 @@ function fancyPotato(person1, person2) {
     
 var secondSortedArray = objArray.sort(fancyPotato);
 
-console.log(secondSortedArray);
+//console.log(secondSortedArray);
+
+// Create a function that can be used with Array.prototype.map. 
+//This function should take a number and return its square. 
+// Then, use this function with map on an array of numbers to check the result.
+
+function squareGetter (placeholderArray) {
+  return placeholderArray.map(function squaresTheVar (x) {
+    return Math.pow(x, 2);
+  });
+}
+console.log(squareGetter([1, 5, 100]));
+
+
