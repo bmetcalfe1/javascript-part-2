@@ -101,7 +101,7 @@ function numSquarer (placeholderObject) {
   return placeholderObject.map(squareNumPropertyOfObject);
 }
 
-console.log(numSquarer([{num: 5, name: "bro"}, {num: 6, name: "dude"}]));
+// console.log(numSquarer([{num: 5, name: "bro"}, {num: 6, name: "dude"}]));
 
 // In a previous workshop, you had to create a function that took two numbers and an operation (add, sub, mult, …) 
 //and returned the result of the operation on the two numbers. 
@@ -113,10 +113,39 @@ console.log(numSquarer([{num: 5, name: "bro"}, {num: 6, name: "dude"}]));
 // var adder = operationMaker(“add”); var sum = adder(5, 10); //15
 //var mult = operationMaker(“mult”); var product = mult(5, 10); // 50
 
-// function operationMaker (operation) {
-//     function twoNums (num1, num2) {
-//         return (num1 "operation" num2);
-//     }
-// }
+function operationMaker (operation) {
+    
+        if (operation === "add") {
+            return function(numba1, numba2) { 
+                return (numba1 + numba2); 
+            };
+        }
+        else if (operation === "sub") {
+            return function(numba1, numba2) {
+                return (numba1 - numba2);
+            };
+        }
+        else if (operation === "mult") {
+            return function(numba1, numba2){
+                return (numba1 * numba2);
+            };
+        }
+        else if (operation === "div") {
+            return function(numba1, numba2){
+                return (numba1 / numba2);
+            };
+        }
+        else {
+            console.log("That is not a valid operator");   
+        }
+}
 
-//console.log(operationMaker("div"));
+var sumOperationAdd = operationMaker('add');
+var sumOperationSub = operationMaker('sub');
+var sumOperationMult = operationMaker('mult');
+var sumOperationDiv = operationMaker('div');
+
+console.log( sumOperationAdd(1, 2) );
+console.log( sumOperationSub(1, 2) );
+console.log( sumOperationMult(1, 2) );
+console.log( sumOperationDiv(1, 2) );
