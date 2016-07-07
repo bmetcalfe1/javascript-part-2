@@ -17,16 +17,6 @@
 // This method should, using `this.type`, return `true` or `false` depending on whether the tile can be walked on. 
 // The function should return `true` if the type is "grass" or "sand". The function should return `false` if the type is anything else.
 
-function Tile (type){
-    isWalkable: function(){
-        if (type === 'sand' || type === 'grass') {
-            this.type === 'true';
-        }
-        else {
-            this.type === 'false';    
-        }
-    }
-}
 
 //   * Create a constructor function called `Map` that will generate a map. 
 // This function will take parameters `width` and `height` and create a map object with these properties:
@@ -34,10 +24,52 @@ function Tile (type){
 //     * `height`: whatever was passed to the `Map` constructor function (should be an integer value)
 //     * `tiles`: this property should be created as a 2D array of `Tile` objects *inside the constructor*.
 
+function Tile (type) {
+    isWalkable = function(){
+        if (type === 'sand' || type === 'grass') {
+            this.type === 'true';
+        }
+        else {
+            this.type === 'false';    
+        }
+    };
+}
+
 function Map (width, height) {
     this.width = width;
     this.height = height;
-    tiles: [];
+    this.tileSize = (this.width * this.height);
+    this.tiles = [];
+    getTile = function(col, row) {
+        return this.tiles[row * Map.width + col];
+    };
+   
+    for (var c = 0; c < Map.width; c++) {
+        for (var r = 0; r < Map.height; r++) {
+            var tile = map.getTile(c, r);
+        
+            if (tile !== 0) { // 0 => empty tile
+            
+                context.drawImage(
+                    tileAtlas, // image
+                    (tile - 1) * map.tsize, // source x
+                    0, // source y
+                    Map.tileSize, // source width
+                    Map.tileSize, // source height
+                    c * Map.tileSize, // target x
+                    r * Map.tileSize, // target y
+                    Map.tileSize, // target width
+                    Map.tileSize // target height
+                );
+            }
+        }
+    } 
+    getWalkableOutput = function () {
+        
+    };
+    getAsciiOutput = function () {
+        
+    };
 }
 
 // Using two nested `for` loops bound by `width` and `height` respectively, 
@@ -54,6 +86,7 @@ function Map (width, height) {
 //     OOXO
 //     OOOO
 //     ```
+
 
 //     * `getAsciiOutput`: this method should iterate over the `this.tiles` 2D array 
 // and output in the console a rectangle representing the disposition of the map. 
